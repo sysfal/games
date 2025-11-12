@@ -14,5 +14,134 @@
 </style>
 </head>
 <body>
+<canvas id="myCanvas" width="1000" height="800"></canvas>
+<script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
 
+ctx.globalAlpha = 1.0;
+
+// red piece side 1
+var path=new Path2D();
+x=500;
+y=100;
+path.moveTo(x,y);
+path.lineTo(x+100,y+100);
+path.lineTo(x+100,y+300);
+path.lineTo(x,y+200);
+ctx.fillStyle = "rgb(212,55,42)";
+ctx.fill(path);
+
+ctx.beginPath();
+ctx.strokeStyle = "rgb(100,20,20)";
+ctx.moveTo(x, y+100);
+ctx.lineTo(x+100, y+100);
+ctx.stroke();
+ctx.moveTo(x, y+200);
+ctx.lineTo(x+100, y+200);
+ctx.stroke();
+
+// red piece side 1
+var path=new Path2D();
+x=600;
+y=200;
+path.moveTo(x,y);
+path.lineTo(x+100,y-100);
+path.lineTo(x+100,y+100);
+path.lineTo(x,y+200);
+path.lineTo(x,y+100);
+ctx.fillStyle = "rgb(212,55,42)";
+ctx.fill(path);
+
+ctx.beginPath();
+ctx.strokeStyle = "rgb(100,20,20)";
+ctx.moveTo(x, y);
+ctx.lineTo(x+100, y);
+ctx.stroke();
+ctx.moveTo(x, y+100);
+ctx.lineTo(x+100, y+100);
+ctx.stroke();
+
+
+// yellow piece
+var path=new Path2D();
+x=100;
+y=100;
+path.moveTo(x,y);
+path.lineTo(x+200,y);
+path.lineTo(x+200,y+200);
+ctx.fillStyle = "rgb(252,240,80)";
+ctx.fill(path);
+
+ctx.beginPath();
+ctx.moveTo(x+100, y);
+ctx.lineTo(x+100, y+100);
+ctx.lineTo(x+200, y+100);
+ctx.strokeStyle = "rgb(245,200,70)";
+ctx.stroke();
+
+// white triangle piece
+x=100;
+y=300;
+
+ctx.beginPath();
+ctx.moveTo(x,y);
+ctx.lineTo(x,y+400);
+ctx.lineTo(x+200,y+200);
+ctx.lineTo(x,y);
+ctx.moveTo(x,y+100);
+ctx.lineTo(x+100,y+100);
+ctx.lineTo(x+100,y+300);
+ctx.lineTo(x,y+300);
+
+ctx.moveTo(x,y+200);
+ctx.lineTo(x+200,y+200);
+
+ctx.strokeStyle = "grey";
+ctx.stroke();
+
+// white square piece
+var path=new Path2D();
+x=400;
+y=300;
+ctx.beginPath();
+ctx.moveTo(x,y);
+ctx.lineTo(x+100,y+100);
+ctx.lineTo(x,y+200);
+ctx.lineTo(x-100,y+100);
+ctx.lineTo(x,y);
+
+ctx.moveTo(x,y);
+ctx.lineTo(x,y+200);
+
+ctx.moveTo(x-100,y+100);
+ctx.lineTo(x+100,y+100);
+
+ctx.strokeStyle = "grey";
+ctx.stroke();
+
+// blue triangle piece
+x=600;
+y=400;
+
+ctx.beginPath();
+ctx.moveTo(x,y);
+ctx.lineTo(x,y+400);
+ctx.lineTo(x+200,y+200);
+ctx.lineTo(x,y);
+ctx.moveTo(x,y+100);
+ctx.lineTo(x+100,y+100);
+ctx.lineTo(x+100,y+300);
+ctx.lineTo(x,y+300);
+
+ctx.moveTo(x,y+200);
+ctx.lineTo(x+200,y+200);
+
+ctx.strokeStyle = "grey";
+ctx.stroke();
+
+
+console.log("done");
+
+</script>
 </body>
