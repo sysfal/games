@@ -4,141 +4,148 @@
   size: A4 landscape;
   margin: 0;
 }
-@media print {
-  html, body {
-    width: 297mm;
-    height: 210mm;
-  }
-}
 
 </style>
 </head>
 <body>
-<canvas id="myCanvas" width="1000" height="800"></canvas>
+<canvas id="myCanvas" width="1000" height="580"></canvas>
 <script>
+function drawRed(x, y) {
+  // red piece side 1
+  var path=new Path2D();
+  path.moveTo(x,y);
+  path.lineTo(x+size,y+size);
+  path.lineTo(x+size,y+3*size);
+  path.lineTo(x,y+2*size);
+  ctx.fillStyle = "rgb(212,55,42)";
+  ctx.fill(path);
+
+  ctx.beginPath();
+  ctx.strokeStyle = "rgb(100,20,20)";
+  ctx.moveTo(x, y+size);
+  ctx.lineTo(x+size, y+size);
+  ctx.stroke();
+  ctx.moveTo(x, y+2*size);
+  ctx.lineTo(x+size, y+2*size);
+  ctx.stroke();
+
+  // red piece side 2
+  var path=new Path2D();
+  x=x+size;
+  y=y+size;
+  path.moveTo(x,y);
+  path.lineTo(x+size,y-size);
+  path.lineTo(x+size,y+size);
+  path.lineTo(x,y+2*size);
+  path.lineTo(x,y+size);
+  ctx.fillStyle = "rgb(212,55,42)";
+  ctx.fill(path);
+
+  ctx.beginPath();
+  ctx.strokeStyle = "rgb(100,20,20)";
+  ctx.moveTo(x, y);
+  ctx.lineTo(x+size, y);
+  ctx.stroke();
+  ctx.moveTo(x, y+size);
+  ctx.lineTo(x+size, y+size);
+  ctx.stroke();
+}
+
+function drawYellow(x, y) {
+  // yellow piece
+  var path=new Path2D();
+  path.moveTo(x,y);
+  path.lineTo(x+2*size,y);
+  path.lineTo(x+2*size,y+2*size);
+  ctx.fillStyle = "rgb(252,240,80)";
+  ctx.fill(path);
+
+  ctx.beginPath();
+  ctx.moveTo(x+size, y);
+  ctx.lineTo(x+size, y+size);
+  ctx.lineTo(x+2*size, y+size);
+  ctx.strokeStyle = "rgb(245,200,70)";
+  ctx.stroke();
+}
+
+function drawWhiteTriangle(x, y) {
+  // white triangle piece
+  ctx.beginPath();
+  ctx.moveTo(x,y);
+  ctx.lineTo(x,y+4*size);
+  ctx.lineTo(x+2*size,y+2*size);
+  ctx.lineTo(x,y);
+  ctx.moveTo(x,y+size);
+  ctx.lineTo(x+size,y+size);
+  ctx.lineTo(x+size,y+3*size);
+  ctx.lineTo(x,y+3*size);
+
+  ctx.moveTo(x,y+2*size);
+  ctx.lineTo(x+2*size,y+2*size);
+
+  ctx.strokeStyle = "grey";
+  ctx.stroke();
+}
+
+function drawWhiteSquare(x, y) {
+  // white square piece
+  var path=new Path2D();
+  ctx.beginPath();
+  ctx.moveTo(x,y);
+  ctx.lineTo(x+size,y+size);
+  ctx.lineTo(x,y+2*size);
+  ctx.lineTo(x-size,y+size);
+  ctx.lineTo(x,y);
+
+  ctx.moveTo(x,y);
+  ctx.lineTo(x,y+2*size);
+
+  ctx.moveTo(x-size,y+size);
+  ctx.lineTo(x+size,y+size);
+
+  ctx.strokeStyle = "grey";
+  ctx.stroke();
+}
+
+function drawBlue(x, y) {
+  // blue triangle piece
+  var path=new Path2D();
+  path.moveTo(x,y);
+  path.lineTo(x,y+4*size);
+  path.lineTo(x-2*size,y+2*size);
+  path.lineTo(x,y);
+  ctx.fillStyle = "rgb(50,110,250)";
+  ctx.fill(path);
+
+  ctx.beginPath();
+  ctx.moveTo(x,y+size);
+  ctx.lineTo(x-size,y+size);
+  ctx.lineTo(x-size,y+3*size);
+  ctx.lineTo(x,y+3*size);
+  ctx.moveTo(x,y+2*size);
+  ctx.lineTo(x-2*size,y+2*size);
+  ctx.strokeStyle = "rgb(30,50,200)";
+  ctx.stroke();
+}
+
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 
 ctx.globalAlpha = 1.0;
+size = 86;
 
-// red piece side 1
-var path=new Path2D();
-x=500;
-y=100;
-path.moveTo(x,y);
-path.lineTo(x+100,y+100);
-path.lineTo(x+100,y+300);
-path.lineTo(x,y+200);
-ctx.fillStyle = "rgb(212,55,42)";
-ctx.fill(path);
+drawRed(220,20);
+drawYellow(20, 20);
+drawWhiteTriangle(20, 100);
+drawWhiteSquare(120, 400);
+drawBlue(400, 230);
 
-ctx.beginPath();
-ctx.strokeStyle = "rgb(100,20,20)";
-ctx.moveTo(x, y+100);
-ctx.lineTo(x+100, y+100);
-ctx.stroke();
-ctx.moveTo(x, y+200);
-ctx.lineTo(x+100, y+200);
-ctx.stroke();
+drawRed(220+400,20);
+drawYellow(20+400, 20);
+drawWhiteTriangle(20+400, 100);
+drawWhiteSquare(120+400, 400);
+drawBlue(400+400, 230);
 
-// red piece side 1
-var path=new Path2D();
-x=600;
-y=200;
-path.moveTo(x,y);
-path.lineTo(x+100,y-100);
-path.lineTo(x+100,y+100);
-path.lineTo(x,y+200);
-path.lineTo(x,y+100);
-ctx.fillStyle = "rgb(212,55,42)";
-ctx.fill(path);
-
-ctx.beginPath();
-ctx.strokeStyle = "rgb(100,20,20)";
-ctx.moveTo(x, y);
-ctx.lineTo(x+100, y);
-ctx.stroke();
-ctx.moveTo(x, y+100);
-ctx.lineTo(x+100, y+100);
-ctx.stroke();
-
-
-// yellow piece
-var path=new Path2D();
-x=100;
-y=100;
-path.moveTo(x,y);
-path.lineTo(x+200,y);
-path.lineTo(x+200,y+200);
-ctx.fillStyle = "rgb(252,240,80)";
-ctx.fill(path);
-
-ctx.beginPath();
-ctx.moveTo(x+100, y);
-ctx.lineTo(x+100, y+100);
-ctx.lineTo(x+200, y+100);
-ctx.strokeStyle = "rgb(245,200,70)";
-ctx.stroke();
-
-// white triangle piece
-x=100;
-y=300;
-
-ctx.beginPath();
-ctx.moveTo(x,y);
-ctx.lineTo(x,y+400);
-ctx.lineTo(x+200,y+200);
-ctx.lineTo(x,y);
-ctx.moveTo(x,y+100);
-ctx.lineTo(x+100,y+100);
-ctx.lineTo(x+100,y+300);
-ctx.lineTo(x,y+300);
-
-ctx.moveTo(x,y+200);
-ctx.lineTo(x+200,y+200);
-
-ctx.strokeStyle = "grey";
-ctx.stroke();
-
-// white square piece
-var path=new Path2D();
-x=400;
-y=300;
-ctx.beginPath();
-ctx.moveTo(x,y);
-ctx.lineTo(x+100,y+100);
-ctx.lineTo(x,y+200);
-ctx.lineTo(x-100,y+100);
-ctx.lineTo(x,y);
-
-ctx.moveTo(x,y);
-ctx.lineTo(x,y+200);
-
-ctx.moveTo(x-100,y+100);
-ctx.lineTo(x+100,y+100);
-
-ctx.strokeStyle = "grey";
-ctx.stroke();
-
-// blue triangle piece
-x=600;
-y=400;
-
-ctx.beginPath();
-ctx.moveTo(x,y);
-ctx.lineTo(x,y+400);
-ctx.lineTo(x+200,y+200);
-ctx.lineTo(x,y);
-ctx.moveTo(x,y+100);
-ctx.lineTo(x+100,y+100);
-ctx.lineTo(x+100,y+300);
-ctx.lineTo(x,y+300);
-
-ctx.moveTo(x,y+200);
-ctx.lineTo(x+200,y+200);
-
-ctx.strokeStyle = "grey";
-ctx.stroke();
 
 
 console.log("done");
