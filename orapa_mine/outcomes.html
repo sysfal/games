@@ -8,39 +8,39 @@
 </style>
 </head>
 <body>
-<canvas id="myCanvas" width="1000" height="580"></canvas>
+<canvas id="myCanvas" width="1000" height="600"></canvas>
 <script>
 function drawRed(x, y) {
   // red piece side 1
   var path=new Path2D();
   path.moveTo(x,y);
   path.lineTo(x+size,y+size);
-  path.lineTo(x+size,y+3*size);
-  path.lineTo(x,y+2*size);
+  path.lineTo(x+3*size,y+size);
+  path.lineTo(x+2*size,y);
   ctx.fillStyle = "rgb(212,55,42)";
   ctx.fill(path);
 
   ctx.beginPath();
   ctx.strokeStyle = "rgb(100,20,20)";
-  ctx.moveTo(x, y+size);
+  ctx.moveTo(x+size, y);
   ctx.lineTo(x+size, y+size);
   ctx.stroke();
-  ctx.moveTo(x, y+2*size);
-  ctx.lineTo(x+size, y+2*size);
+  ctx.moveTo(x+2*size, y);
+  ctx.lineTo(x+2*size, y+size);
   ctx.stroke();
 }
 
 function drawYellow(x, y) {
   // yellow piece
   var path=new Path2D();
-  path.moveTo(x,y);
-  path.lineTo(x+2*size,y);
+  path.moveTo(x,y+2*size);
   path.lineTo(x+2*size,y+2*size);
+  path.lineTo(x+2*size,y);
   ctx.fillStyle = "rgb(252,240,80)";
   ctx.fill(path);
 
   ctx.beginPath();
-  ctx.moveTo(x+size, y);
+  ctx.moveTo(x+size, y+2*size);
   ctx.lineTo(x+size, y+size);
   ctx.lineTo(x+2*size, y+size);
   ctx.strokeStyle = "rgb(245,200,70)";
@@ -51,16 +51,16 @@ function drawWhiteTriangle(x, y) {
   // white triangle piece
   ctx.beginPath();
   ctx.moveTo(x,y);
-  ctx.lineTo(x,y+4*size);
-  ctx.lineTo(x+2*size,y+2*size);
+  ctx.lineTo(x+4*size,y);
+  ctx.lineTo(x+2*size,y-2*size);
   ctx.lineTo(x,y);
-  ctx.moveTo(x,y+size);
-  ctx.lineTo(x+size,y+size);
-  ctx.lineTo(x+size,y+3*size);
-  ctx.lineTo(x,y+3*size);
+  ctx.moveTo(x+size,y);
+  ctx.lineTo(x+size,y-size);
+  ctx.lineTo(x+3*size,y-size);
+  ctx.lineTo(x+3*size,y);
 
-  ctx.moveTo(x,y+2*size);
-  ctx.lineTo(x+2*size,y+2*size);
+  ctx.moveTo(x+2*size,y);
+  ctx.lineTo(x+2*size,y-2*size);
 
   ctx.strokeStyle = "grey";
   ctx.stroke();
@@ -89,20 +89,20 @@ function drawWhiteSquare(x, y) {
 function drawBlue(x, y) {
   // blue triangle piece
   var path=new Path2D();
-  path.moveTo(x,y);
-  path.lineTo(x,y+4*size);
-  path.lineTo(x-2*size,y+2*size);
-  path.lineTo(x,y);
+  path.moveTo(x,y+2*size);
+  path.lineTo(x+4*size,y+2*size);
+  path.lineTo(x+2*size,y);
+  //path.lineTo(x,y);
   ctx.fillStyle = "rgb(50,110,250)";
   ctx.fill(path);
 
   ctx.beginPath();
-  ctx.moveTo(x,y+size);
-  ctx.lineTo(x-size,y+size);
-  ctx.lineTo(x-size,y+3*size);
-  ctx.lineTo(x,y+3*size);
-  ctx.moveTo(x,y+2*size);
-  ctx.lineTo(x-2*size,y+2*size);
+  ctx.moveTo(x+size,y+2*size);
+  ctx.lineTo(x+size,y+size);
+  ctx.lineTo(x+3*size,y+size);
+  ctx.lineTo(x+3*size,y+2*size);
+  ctx.moveTo(x+2*size,y+2*size);
+  ctx.lineTo(x+2*size,y);
   ctx.strokeStyle = "rgb(30,50,200)";
   ctx.stroke();
 }
@@ -146,31 +146,33 @@ ctx.font = "25px Arial";
 ctx.globalAlpha = 1.0;
 size = 50;
 
-drawRed(20,20);
-drawPlus(100, 75);
-drawYellow(170, 50);
-drawEqual(300, 75);
-drawSquare(400, 70, "orange");
+vgap = 150;
 
-drawRed(20,220);
-drawPlus(100, 275);
-drawBlue(270, 200);
-drawEqual(300, 270);
-drawSquare(400, 270, "purple");
+drawRed(20,70);
+drawPlus(200, 75);
+drawYellow(320, 20);
+drawEqual(500, 75);
+drawSquare(570, 70, "orange");
 
-drawYellow(20, 450);
+drawRed(20,70+vgap);
+drawPlus(200, 75+vgap);
+drawBlue(270, 175);
+drawEqual(500, 75+vgap);
+drawSquare(570, 70+vgap, "purple");
 
-drawBlue(270, 450);
+drawYellow(70, 325);
+drawPlus(200, 75+2*vgap);
+drawBlue(270, 325);
+drawEqual(500, 75+2*vgap);
+drawSquare(570, 70+2*vgap, "green");
 
+drawRed(20, 70+3*vgap);
+drawPlus(200, 75+3*vgap);
+drawWhiteTriangle(270, 575);
+drawEqual(500, 75+3*vgap);
+drawSquare(570, 70+3*vgap, "pink");
 
-
-
-//drawWhiteTriangle(20, 100);
-//drawWhiteSquare(120, 400);
-//drawBlue(400, 230);
-
-
-
+//drawYellow(700, 20);
 
 console.log("done");
 
